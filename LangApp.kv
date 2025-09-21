@@ -1,0 +1,181 @@
+ScreenManager:
+    LanguageScreen:
+    RegistrationScreen:
+    OTPScreen:
+    LandingScreen:
+    TestListScreen:
+    UserProfileScreen:
+
+<LanguageScreen>:
+    name: "language"
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "20dp"
+        padding: "20dp"
+
+        MDLabel:
+            text: "🌍 Choose Your Language"
+            halign: "center"
+            font_style: "H5"
+            bold: True
+
+        ScrollView:
+            MDList:
+                OneLineIconListItem:
+                    text: "English"
+                    on_release: root.set_language("English")
+                    IconLeftWidget:
+                        icon: "web"
+
+                OneLineIconListItem:
+                    text: "Hindi"
+                    on_release: root.set_language("Hindi")
+                    IconLeftWidget:
+                        icon: "web"
+
+                OneLineIconListItem:
+                    text: "Spanish"
+                    on_release: root.set_language("Spanish")
+                    IconLeftWidget:
+                        icon: "web"
+
+                OneLineIconListItem:
+                    text: "French"
+                    on_release: root.set_language("French")
+                    IconLeftWidget:
+                        icon: "web"
+
+                OneLineIconListItem:
+                    text: "Chinese"
+                    on_release: root.set_language("Chinese")
+                    IconLeftWidget:
+                        icon: "web"
+
+        MDRaisedButton:
+            text: "Continue"
+            pos_hint: {"center_x": .5}
+            md_bg_color: app.theme_cls.primary_color
+            on_release: root.go_next()
+
+<RegistrationScreen>:
+    name: "registration"
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "15dp"
+
+        MDLabel:
+            text: "Registration"
+            halign: "center"
+            font_style: "H5"
+
+        MDTextField:
+            id: name
+            hint_text: "Full Name"
+            icon_right: "account"
+
+        MDTextField:
+            id: email
+            hint_text: "Email"
+            icon_right: "email"
+
+        MDTextField:
+            id: phone
+            hint_text: "Phone Number"
+            icon_right: "phone"
+            input_filter: "int"
+
+        MDRaisedButton:
+            text: "Register"
+            pos_hint: {"center_x": .5}
+            md_bg_color: app.theme_cls.primary_color
+            on_release: root.register(name.text, email.text, phone.text)
+
+<OTPScreen>:
+    name: "otp"
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "15dp"
+
+        MDLabel:
+            text: "OTP Verification"
+            halign: "center"
+            font_style: "H5"
+
+        MDTextField:
+            id: otp
+            hint_text: "Enter OTP"
+            icon_right: "lock"
+
+        MDRaisedButton:
+            text: "Verify OTP"
+            pos_hint: {"center_x": .5}
+            md_bg_color: app.theme_cls.primary_color
+            on_release: root.verify(otp.text)
+
+<LandingScreen>:
+    name: "landing"
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "20dp"
+
+        MDLabel:
+            text: "🎉 Welcome!"
+            halign: "center"
+            font_style: "H4"
+
+        MDRaisedButton:
+            text: "▶ Watch Video"
+            md_bg_color: 1, 0, 0, 1
+            on_release: root.open_video()
+
+        MDRaisedButton:
+            text: "📞 Start Calling Now"
+            md_bg_color: app.theme_cls.primary_color
+            on_release: root.go_testlist()
+
+<TestListScreen>:
+    name: "test_list"
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "10dp"
+        spacing: "10dp"
+
+        MDLabel:
+            text: "📊 Test List"
+            halign: "center"
+            font_style: "H5"
+
+        ScrollView:
+            MDList:
+                id: test_list
+
+        MDRaisedButton:
+            text: "⬅ Back"
+            md_bg_color: .7, .7, .7, 1
+            on_release: root.back()
+
+<UserProfileScreen>:
+    name: "user_profile"
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "15dp"
+
+        MDLabel:
+            id: name
+            text: ""
+            font_style: "H5"
+            halign: "center"
+
+        MDLabel:
+            id: email
+            text: ""
+            halign: "center"
+
+        MDRaisedButton:
+            text: "⬅ Back to Tests"
+            pos_hint: {"center_x": .5}
+            on_release: root.back()
